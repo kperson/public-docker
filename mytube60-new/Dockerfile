@@ -31,3 +31,4 @@ RUN echo "==> fetch all sbt jars from Maven repo..."       && \
 #Node
 RUN apt-get -y update
 RUN apt-get -y install nodejs npm
+RUN ln -s /usr/bin/nodejs /usr/bin/node
