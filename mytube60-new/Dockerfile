@@ -27,8 +27,6 @@ RUN echo "==> fetch all sbt jars from Maven repo..."       && \
     echo "==> [CAUTION] this may take several minutes!!!"  && \
     sbt
 
-
 #Node
-RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
-RUN apt-get install nodejs
-RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+RUN apt-get install -y nodejs
