@@ -3,7 +3,7 @@ MAINTAINER Kelton Person <github.com/kperson>
 
 #BASE
 RUN apt-get update
-RUN apt-get install -y python-software-properties software-properties-common
+RUN apt-get install -y python-software-properties software-properties-common curl
 RUN apt-get install -y vim git wget libfreetype6 libfontconfig bzip2  build-essential
 RUN apt-get upgrade -y
 RUN apt-get install -y apparmor
@@ -29,6 +29,6 @@ RUN echo "==> fetch all sbt jars from Maven repo..."       && \
 
 
 #Node
-RUN apt-get -y update
-RUN apt-get -y install nodejs npm
+RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
+RUN apt-get install nodejs
 RUN ln -s /usr/bin/nodejs /usr/bin/node
