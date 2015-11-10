@@ -34,9 +34,6 @@ RUN echo 'export CATALINA_OPTS="$RUNTIME_OPTS"' > bin/setenv.sh
 RUN mkdir -p /artifactory
 ENV ARTIFACTORY_HOME /artifactory
 
-# Expose Artifactories data, log and backup directory.
-VOLUME /artifactory/data
-VOLUME /artifactory/logs
-VOLUME /artifactory/backup
+VOLUME /artifactory
 
 WORKDIR /artifactory
