@@ -35,5 +35,7 @@ RUN mkdir -p /artifactory
 ENV ARTIFACTORY_HOME /artifactory
 
 VOLUME /artifactory/backup
+VOLUME /artifactory/data
+VOLUME /artifactory/logs
 
 WORKDIR /artifactory
