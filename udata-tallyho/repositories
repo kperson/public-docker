@@ -1,0 +1,9 @@
+[repositories]
+  local
+  sbt-plugin-releases: https://dl.bintray.com/sbt/sbt-plugin-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+  typesafe-plugin-releases: https://dl.bintray.com/typesafe/ivy-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+
+  maven-releases: https://repo1.maven.org/maven2/
+  typesafe-maven: https://dl.bintray.com/typesafe/maven-releases/
+  sonatype-maven: https://oss.sonatype.org/content/repositories/releases/
+  kelton-maven-snapshot: https://dl.dropboxusercontent.com/u/27583554/maven/snapshot/
