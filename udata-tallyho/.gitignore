@@ -10,7 +10,5 @@ project/boot/
 .ivy
 .sbt
 .boot
-.sbtboot
-.sbtopts
 .env
 .idea
