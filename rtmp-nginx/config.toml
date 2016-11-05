@@ -1,0 +1,14 @@
+[template]
+src = "nginx.conf.tmpl"
+dest = "/etc/nginx/nginx.conf"
+keys = [
+    "/stream",
+    "/connect/url",
+    "/play/url",
+    "/publish/url",
+    "/done/url",
+    "playdone/url",
+    "/publishdone/url",
+    "dash",
+    "hls"
+]
