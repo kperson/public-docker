@@ -5,6 +5,8 @@ MAINTAINER https://github.com/kperson
 #install dependencies
 RUN apk update
 RUN apk upgrade
+RUN apk add --update ca-certificates wget
+RUN update-ca-certificates
 RUN apk add --update make gcc libc-dev pcre-dev openssl-dev
 
 #build and install nginx
