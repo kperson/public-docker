@@ -14,22 +14,22 @@ rtmp {
             allow publish all;
             allow play all;
             {{if exists "/connect/url"}}
-                on_connect {{getv "/connect/url"}}
+                on_connect {{getv "/connect/url"}};
             {{end}}
             {{if exists "/play/url"}}
-                on_play {{getv "/play/url"}}
+                on_play {{getv "/play/url"}};
             {{end}}
             {{if exists "/publish/url"}}
-                on_publish {{getv "/publish/url"}}
+                on_publish {{getv "/publish/url"}};
             {{end}}
             {{if exists "/done/url"}}
-                on_publish {{getv "/done/url"}}
+                on_publish {{getv "/done/url"}};
             {{end}}
             {{if exists "/playdone/url"}}
-                on_play_done {{getv "/playdone/url"}}
+                on_play_done {{getv "/playdone/url"}};
             {{end}}
             {{if exists "/publishdone/url"}}
-                on_publish_done {{getv "/publishdone/url"}}
+                on_publish_done {{getv "/publishdone/url"}};
             {{end}}
             
 
