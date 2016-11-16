@@ -13,4 +13,5 @@ fi
 
 export STREAM=${STREAM_APP:-stream}
 confd -onetime -backend env
+cat /etc/nginx/nginx.conf
 exec $@

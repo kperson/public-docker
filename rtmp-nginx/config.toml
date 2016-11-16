@@ -9,6 +9,8 @@ keys = [
     "/done/url",
     "playdone/url",
     "/publishdone/url",
+    "/update/url",
+    "/update/timeout",
     "dash",
     "hls"
 ]
