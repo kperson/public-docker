@@ -5,7 +5,7 @@ events {
 rtmp {
 
     server {
-        
+
         listen 1935;
         chunk_size 4000;
 
@@ -38,7 +38,7 @@ rtmp {
             {{if exists "/update/timeout"}}
                 notify_update_timeout {{getv "/update/timeout"}};
             {{end}}
-            
+
             {{if exists "/hls"}}
                 hls on;
                 hls_path /vout/hls;
@@ -48,6 +48,21 @@ rtmp {
                 dash_path /vout/dash;
             {{end}}
 
+            {{if exists "exec/play"}}
+                exec_play {{getv "/exec/play"}};
+            {{end}}
+
+            {{if exists "exec/publish"}}
+                exec_publish {{getv "/exec/publish"}};
+            {{end}}
+
+            {{if exists "exec/playdone"}}
+                exec_play_done {{getv "/exec/playdone"}};
+            {{end}}
+
+            {{if exists "exec/publishdone"}}
+                exec_publish_done {{getv "/exec/publishdone"}};
+            {{end}}
             notify_method get;
         }
     }
@@ -55,7 +70,7 @@ rtmp {
 
 http {
     server {
-        
+
         listen 80;
         {{if exists "/hls"}}
         location /hls {
@@ -68,7 +83,7 @@ http {
             add_header Allow-Control-Allow-Origin *;
         }
         {{end}}
-        
+
         {{if exists "/dash"}}
         location /dash {
             types {

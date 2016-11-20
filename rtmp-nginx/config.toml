@@ -12,5 +12,9 @@ keys = [
     "/update/url",
     "/update/timeout",
     "dash",
-    "hls"
+    "hls",
+    "exec/play",
+    "exec/publish",
+    "exec/playdone",
+    "exec/publishdone"
 ]
