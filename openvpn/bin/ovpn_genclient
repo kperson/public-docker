@@ -1,0 +1,5 @@
+#!/bin/sh
+
+docker run --volumes-from vpn-data --rm -it server_vpn easyrsa build-client-full $1 nopass
+docker run --volumes-from vpn-data --rm server_vpn ovpn_getclient $1 > $1.ovpn
+

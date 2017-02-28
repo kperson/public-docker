@@ -1,11 +1,11 @@
 # Original credit: https://github.com/jpetazzo/dockvpn
 
-FROM alpine:3.4
+FROM alpine:3.5
 
 RUN apk update
 RUN apk upgrade
 
-RUN apk add openvpn iptables ip6tables git
+RUN apk add openvpn iptables ip6tables git openssl bash
 
 # Update checkout to use tags when v3.0 is finally released
 RUN git clone --depth 1 --branch v3.0.0-rc2 https://github.com/OpenVPN/easy-rsa.git /usr/local/share/easy-rsa && \

@@ -3,17 +3,42 @@
 OpenVPN server in a Docker container complete with an EasyRSA PKI CA.
 
 ## Quick Start
+You can do this on a seperate machine and transfer $OVPN_DIR to the server or execute this direcly on the server.
 
-* Run `./init-vpn` on the server.  Only do this ONCE. Follow the prompts.
-* When running `./start-prod` the VPN will start.
+configure
+```
+OVPN_DIR=/data/vpn
+OVPN_DOMAIN=www.example.com
+cd /my-dir
+docker run -v $OVPN_DIR:/etc/openvpn --rm kperson/openvpn ovpn_genconfig -u udp://$OVPN_DOMAIN
+docker run -v $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn ovpn_initpki
+```
 
-# Generating Client Credentials
+start the server
+```
+docker run -d -v $OVPN_DIR:/etc/openvpn --privileged kperson/openvpn
+```
 
-* Run  `./genclient-vpn <your_name>`.
-* Use SCP to copy <your_name>.ovpn to your develomment machine ( development machine: (`scp root@www.vidicast.me:/root/live-video/server/<your_name>.ovpn <your_name>.ovpn`).
-* Remove <your_name>.ovpn from the server (server: `rm <your_name>.ovpn`).
+## Generating Client Credentials
+On the server
+```bash
+OVPN_PROFILE=bob
+docker run $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn easyrsa build-client-full $OVPN_PROFILE nopass
+docker run $OVPN_DIR:/etc/openvpn --rm kperson/openvpn ovpn_getclient $OVPN_PROFILE > $OVPN_PROFILE.ovpn
+```
 
-# Using your Credentials
+On your local machine
+```bash
+scp root@$DOMAIN:/my-dir/bob.ovpn bob.ovpn
+```
 
-* Open  <your_name>.ovpn with [Tunnelblick](https://tunnelblick.net/) on your MAC.
+On the server
+```bash
+rm /my-dir/$OVPN_PROFILE.ovpn
+```
+
+
+## Using your Credentials
+
+* Open  `<ovpn_profile>.ovpn` with [Tunnelblick](https://tunnelblick.net/) on your MAC.
 * For other operating systems, see [HOWTO Connect Client Configuration](https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-connect-client-configuration.html).
