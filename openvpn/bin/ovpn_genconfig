@@ -179,7 +179,7 @@ group nogroup
 EOF
 
 [ -n "$OVPN_CLIENT_TO_CLIENT" ] && echo "client-to-client" >> "$conf"
-echo push "dhcp-option DNS 172.18.0.101" >> "$conf"
+echo push "dhcp-option DNS ${DNS_OVERRIDE:=8.8.8.8}" >> "$conf"
 # Append Routes
 for i in "${OVPN_ROUTES[@]}"; do
     # If user passed "0" skip this, assume no extra routes

@@ -11,20 +11,30 @@ OVPN_DIR=/data/vpn
 OVPN_DOMAIN=www.example.com
 cd /my-dir
 docker run -v $OVPN_DIR:/etc/openvpn --rm kperson/openvpn ovpn_genconfig -u udp://$OVPN_DOMAIN
+#docker run -v $OVPN_DIR:/etc/openvpn --rm -e DNS_OVERRIDE=10.1.0.7 kperson/openvpn ovpn_genconfig -u udp://$OVPN_DOMAIN
 docker run -v $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn ovpn_initpki
 ```
 
 start the server
 ```
-docker run -d -v $OVPN_DIR:/etc/openvpn --privileged kperson/openvpn
+docker run -d --name vpn -v $OVPN_DIR:/etc/openvpn -p 1194:1194/udp --privileged kperson/openvpn
+
+#docker network connect --ip 10.1.0.5 vidicastnet vpn
+#docker network connect --ip 10.2.0.5 vidicastnet_stage vpn
+#docker network connect --ip 10.3.0.5 vidicastnet_dev vpn
+
+#docker run -d --name dns andyshinn/dnsmasq:2.76 -S 127.0.0.11 -R
+#docker network connect --ip 10.1.0.7 vidicastnet dns
+#docker network connect --ip 10.2.0.7 vidicastnet_stage dns
+#docker network connect --ip 10.3.0.7 vidicastnet_dev dns
 ```
 
 ## Generating Client Credentials
 On the server
 ```bash
 OVPN_PROFILE=bob
-docker run $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn easyrsa build-client-full $OVPN_PROFILE nopass
-docker run $OVPN_DIR:/etc/openvpn --rm kperson/openvpn ovpn_getclient $OVPN_PROFILE > $OVPN_PROFILE.ovpn
+docker run -v $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn easyrsa build-client-full $OVPN_PROFILE nopass
+docker run -v $OVPN_DIR:/etc/openvpn --rm kperson/openvpn ovpn_getclient $OVPN_PROFILE > $OVPN_PROFILE.ovpn
 ```
 
 On your local machine
