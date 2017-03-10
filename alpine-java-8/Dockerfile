@@ -13,6 +13,7 @@ RUN apk upgrade
 RUN apk add --update ca-certificates wget
 RUN update-ca-certificates
 RUN apk add openjdk8-jre-base bash
+RUN apk add --update openjdk8
 ENV JAVA_HOME /usr/lib/jvm/default-jvm
 
 # scala
