@@ -1,6 +1,4 @@
-FROM alpine:3.4
-
-MAINTAINER https://github.com/kperson
+FROM alpine:3.5
 
 #install dependencies
 RUN apk update
