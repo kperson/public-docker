@@ -2,7 +2,7 @@ FROM kperson/alpine-java-8
 
 RUN apk add bash openssh git curl py-pip==8.1.2-r0 --update
 
-ADD https://github.com/moby/moby/archive/v17.04.0-ce.tar.gz /docker.tgz
+ADD https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz /docker.tgz
 ADD https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/3.3/swarm-client-3.3.jar /swarm-client.jar
 
 RUN mkdir -p /docker
