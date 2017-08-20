@@ -1,6 +1,6 @@
 FROM kperson/alpine-java-8
 
-RUN apk add bash openssh git curl py-pip==8.1.2-r0 --update
+RUN apk add bash openssh git curl py2-pip==9.0.0-r1 --update
 
 ADD https://download.docker.com/linux/static/stable/x86_64/docker-17.06.1-ce.tgz /docker-17.06.1-ce.tgz
 ADD https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/3.3/swarm-client-3.3.jar /swarm-client.jar
