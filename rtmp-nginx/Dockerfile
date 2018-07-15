@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:3.8
 
 #install dependencies
 RUN apk update
