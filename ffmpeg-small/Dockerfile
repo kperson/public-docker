@@ -19,24 +19,13 @@ RUN apk add --update build-base curl nasm tar bzip2 \
     --disable-protocol=concat --disable-protocol=data --disable-protocol=crypto --disable-protocol=data \
     --disable-protocol=ftp --disable-protocol=gopher --disable-protocol=hls --disable-protocol=http \
     --disable-protocol=httpproxy --disable-protocol=mmst --disable-protocol=pipe --disable-protocol=rtp \
+    --disable-protocol=subfile --disable-protocol=udp --disable-protocol=udplite --disable-protocol=unix \
     --disable-protocol=srtp --disable-protocol=icecast --disable-protocol=prompeg --disable-protocol=tee && \
   make && \
   make install && \
   make distclean && \
   rm -rf ${DIR} && \
   apk del build-base curl tar bzip2 x264 nasm && rm -rf /var/cache/apk/*
-
-RUN echo "muxers"
-RUN ffmpeg -muxers
-
-RUN echo "demuxers"
-RUN ffmpeg -demuxers
-
-RUN echo "encoders"
-RUN ffmpeg -encoders
-
-RUN echo "encoders"
-RUN ffmpeg -decoders
 
 COPY entrypoint.sh /entrypoint.sh
 
