@@ -20,6 +20,7 @@ RUN apk add --update build-base curl nasm tar bzip2 \
     --disable-protocol=ftp --disable-protocol=gopher --disable-protocol=hls --disable-protocol=http \
     --disable-protocol=httpproxy --disable-protocol=mmst --disable-protocol=pipe --disable-protocol=rtp \
     --disable-protocol=subfile --disable-protocol=udp --disable-protocol=udplite --disable-protocol=unix \
+    --disable-protocol=cache --disable-protocol=md5 --disable-protocol=async \
     --disable-protocol=srtp --disable-protocol=icecast --disable-protocol=prompeg --disable-protocol=tee && \
   make && \
   make install && \
@@ -30,18 +31,3 @@ RUN apk add --update build-base curl nasm tar bzip2 \
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-
-
-#cache
-#file
-#subfile
-#tcp
-#udp
-#udplite
-#unix
-#rtmp
-#rtmpe
-#rtmps
-#rtmpt
-#rtmpte
-#md5
