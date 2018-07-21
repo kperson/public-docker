@@ -15,7 +15,7 @@ RUN apk add --update build-base curl nasm tar bzip2 \
     --enable-encoder=aac --enable-encoder=libx264 --enable-encoder=flv \ 
     --enable-libx264 \
     --enable-librtmp \
-    --enable-filter=scale \
+    --enable-filter=scale --enable-filter=aresample \
     --disable-protocol=concat --disable-protocol=data --disable-protocol=crypto --disable-protocol=data \
     --disable-protocol=ftp --disable-protocol=gopher --disable-protocol=hls --disable-protocol=http \
     --disable-protocol=httpproxy --disable-protocol=mmst --disable-protocol=pipe --disable-protocol=rtp \
