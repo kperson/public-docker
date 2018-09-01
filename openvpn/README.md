@@ -23,8 +23,8 @@ docker run -d -v $OVPN_DIR:/etc/openvpn --privileged kperson/openvpn
 On the server
 ```bash
 OVPN_PROFILE=bob
-docker run $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn easyrsa build-client-full $OVPN_PROFILE nopass
-docker run $OVPN_DIR:/etc/openvpn --rm kperson/openvpn ovpn_getclient $OVPN_PROFILE > $OVPN_PROFILE.ovpn
+docker run -v $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn easyrsa build-client-full $OVPN_PROFILE nopass
+docker run -v $OVPN_DIR:/etc/openvpn --rm kperson/openvpn ovpn_getclient $OVPN_PROFILE > $OVPN_PROFILE.ovpn
 ```
 
 On your local machine
