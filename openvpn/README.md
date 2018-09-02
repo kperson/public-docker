@@ -37,6 +37,22 @@ On the server
 rm /my-dir/$OVPN_PROFILE.ovpn
 ```
 
+## Revoking Client Credentials
+
+### Enable revoke list (run only once)
+
+```bash
+docker run -v $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn easyrsa gen-crl
+chown nobody:nogroup $OVPN_DIR/pki/crl.pem
+```
+
+### Revoke Credentials
+
+```bash
+docker run -v $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn easyrsa revoke $OVPN_PROFILE
+docker run -v $OVPN_DIR:/etc/openvpn --rm -it kperson/openvpn easyrsa gen-crl
+docker restart vpn
+```
 
 ## Using your Credentials
 
