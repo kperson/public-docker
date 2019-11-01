@@ -1,4 +1,4 @@
-FROM swift:5.0.1-xenial
+FROM swift:5.1.1-xenial
 
 # HINT: run ldd <binary_location> to find linking locations
 # https://superuser.com/questions/239590/find-libraries-a-binary-was-linked-against
