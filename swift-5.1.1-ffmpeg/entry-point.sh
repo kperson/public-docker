@@ -2,7 +2,7 @@
 
 # https://github.com/aws/aws-lambda-runtime-interface-emulator/
 if [ -z "${AWS_LAMBDA_RUNTIME_API}" ]; then
-    exec /usr/local/bin/aws-lambda-rie $EXECUTABLE "$@"
+    exec /usr/local/bin/aws-lambda-rie $DOCKER_EXECUTABLE "$@"
 else
-    exec $EXECUTABLE "$@"
+    exec $DOCKER_EXECUTABLE "$@"
 fi
